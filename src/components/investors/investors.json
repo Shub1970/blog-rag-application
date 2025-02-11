@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_investors_investors",
+  "info": {
+    "displayName": "Investors"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "file_info": {
+      "type": "component",
+      "repeatable": true,
+      "component": "investors.file-data"
+    }
+  }
+}

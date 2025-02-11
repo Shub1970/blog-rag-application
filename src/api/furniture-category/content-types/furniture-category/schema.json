@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "furniture_categories",
+  "info": {
+    "singularName": "furniture-category",
+    "pluralName": "furniture-categories",
+    "displayName": "Furniture Category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "furniture_variant": {
+      "type": "component",
+      "repeatable": true,
+      "component": "furniture-calculator.furniture-variant"
+    }
+  }
+}

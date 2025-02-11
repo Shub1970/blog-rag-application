@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blog_categories",
+  "info": {
+    "singularName": "blog-category",
+    "pluralName": "blog-categories",
+    "displayName": "Blog Category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "name": {
+      "type": "string"
+    },
+    "orderby": {
+      "type": "integer"
+    },
+    "old_id": {
+      "type": "integer"
+    },
+    "Ordering": {
+      "type": "integer"
+    }
+  }
+}

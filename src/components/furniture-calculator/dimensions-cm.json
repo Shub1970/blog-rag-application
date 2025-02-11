@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_furniture_calculator_dimensions_cms",
+  "info": {
+    "displayName": "dimensions",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "height": {
+      "type": "string"
+    },
+    "width": {
+      "type": "string"
+    },
+    "depth": {
+      "type": "string"
+    },
+    "dimensions_type": {
+      "type": "enumeration",
+      "enum": [
+        "cm",
+        "ft"
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_furniture_calculator_furniture_variants",
+  "info": {
+    "displayName": "Furniture Variant",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "multiple_image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "size": {
+      "type": "component",
+      "repeatable": false,
+      "component": "furniture-calculator.size"
+    }
+  }
+}

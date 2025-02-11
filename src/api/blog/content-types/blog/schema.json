@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Blog_author": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "Thumb_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "Banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "published_date": {
+      "type": "date"
+    },
+    "Ordering": {
+      "type": "integer"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "short_content": {
+      "type": "text"
+    },
+    "read_time": {
+      "type": "decimal"
+    },
+    "blog_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-category.blog-category"
+    },
+    "blog_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-tag.blog-tag",
+      "mappedBy": "blog"
+    },
+    "old_id": {
+      "type": "integer"
+    },
+    "table_of_content": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

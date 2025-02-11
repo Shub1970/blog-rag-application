@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_furniture_calculator_sizes",
+  "info": {
+    "displayName": "size",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "dimensions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "furniture-calculator.dimensions-cm"
+    },
+    "quantity_thickness": {
+      "type": "component",
+      "repeatable": true,
+      "component": "furniture-calculator.quantity"
+    }
+  }
+}

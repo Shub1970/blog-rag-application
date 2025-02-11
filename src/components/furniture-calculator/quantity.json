@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_furniture_calculator_quantities",
+  "info": {
+    "displayName": "quantity",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "quantity": {
+      "type": "string"
+    },
+    "thickness": {
+      "type": "string"
+    }
+  }
+}

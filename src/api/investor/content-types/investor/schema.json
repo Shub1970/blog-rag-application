@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "investors",
+  "info": {
+    "singularName": "investor",
+    "pluralName": "investors",
+    "displayName": "Investor",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "investor_info": {
+      "type": "component",
+      "repeatable": true,
+      "component": "investors.investors"
+    }
+  }
+}

@@ -369,6 +369,41 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAddressAddress extends Struct.CollectionTypeSchema {
+  collectionName: 'addresses';
+  info: {
+    description: '';
+    displayName: 'address';
+    pluralName: 'addresses';
+    singularName: 'address';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    city: Schema.Attribute.Relation<'manyToOne', 'api::city.city'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::address.address'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    state: Schema.Attribute.Relation<'manyToOne', 'api::state.state'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiBlogCategoryBlogCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'blog_categories';
@@ -490,6 +525,36 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCityCity extends Struct.CollectionTypeSchema {
+  collectionName: 'cities';
+  info: {
+    displayName: 'city';
+    pluralName: 'cities';
+    singularName: 'city';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    addresses: Schema.Attribute.Relation<'oneToMany', 'api::address.address'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::city.city'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiFurnitureCategoryFurnitureCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'furniture_categories';
@@ -557,6 +622,36 @@ export interface ApiInvestorInvestor extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStateState extends Struct.CollectionTypeSchema {
+  collectionName: 'states';
+  info: {
+    displayName: 'State';
+    pluralName: 'states';
+    singularName: 'state';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    addresses: Schema.Attribute.Relation<'oneToMany', 'api::address.address'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::state.state'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -1015,10 +1110,11 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
+    addresses: Schema.Attribute.Relation<'oneToMany', 'api::address.address'>;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    city: Schema.Attribute.Relation<'oneToOne', 'api::city.city'>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -1047,6 +1143,7 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    state: Schema.Attribute.Relation<'oneToOne', 'api::state.state'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1069,11 +1166,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::address.address': ApiAddressAddress;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::blog-tag.blog-tag': ApiBlogTagBlogTag;
       'api::blog.blog': ApiBlogBlog;
+      'api::city.city': ApiCityCity;
       'api::furniture-category.furniture-category': ApiFurnitureCategoryFurnitureCategory;
       'api::investor.investor': ApiInvestorInvestor;
+      'api::state.state': ApiStateState;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

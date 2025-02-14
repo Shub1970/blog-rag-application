@@ -56,7 +56,7 @@ module.exports = ({ strapi }) => ({
       ];
 
       const completion = await openai.chat.completions.create({
-        model: "gpt-4-turbo-preview",
+        model: "gpt-3.5-turbo",
         messages,
         response_format: { type: "json_object" },
         temperature: 0.7,

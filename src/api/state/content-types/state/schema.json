@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "states",
+  "info": {
+    "singularName": "state",
+    "pluralName": "states",
+    "displayName": "State"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "state"
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "state"
+    }
+  }
+}
